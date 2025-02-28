@@ -29,3 +29,11 @@ jobs:
      context: .
      push: true 
      tags: ${{ secrets.DOCKERHUB_USERNAME }}/${{ env.imageName }}:latest
+ DeployJob:
+  needs: CICDjob
+  runs-on: self-hosted
+  steps:
+  - name: Deploy the Image 
+    run: |
+     docker run -d -P ${{ secrets.DOCKERHUB_USERNAME }}/${{ env.imageName }}:latest
+     docker ps -a
