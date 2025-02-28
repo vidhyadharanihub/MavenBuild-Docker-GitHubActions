@@ -1,9 +1,9 @@
 name: Code build and Deploy 
 on: push 
+env:
+ imageName: "myjavaapp"
 jobs:
  CICDjob:
-  env:
-   imageName: "myjavaapp"
   runs-on: ubuntu-latest
   steps:
   - name: Clone the current repository on the runner
